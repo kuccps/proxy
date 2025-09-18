@@ -6,7 +6,8 @@
   <title>Welcome to Igumori Portal</title>
   <style>
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background: url("https://files.catbox.moe/xj14a4.jpg") no-repeat center center fixed;
+      background-size: cover;
       color: white;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
@@ -14,11 +15,16 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      backdrop-filter: brightness(0.6); /* darken for readability */
     }
 
     .container {
       text-align: center;
       animation: fadeIn 2s ease-in-out;
+      background: rgba(0, 0, 0, 0.5); /* transparent box for text */
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
 
     h1 {
@@ -63,7 +69,7 @@
 
   <script>
     function redirect() {
-      window.location.href = "http://93.177.64.145:7818/student/login";
+      window.location.href = "http://fi5.bot-hosting.net:20662/student";
     }
   </script>
 </body>
