@@ -1,76 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to Igumori Portal</title>
-  <style>
-    body {
-      background: url("https://files.catbox.moe/xj14a4.jpg") no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      backdrop-filter: brightness(0.6); /* darken for readability */
-    }
+from numpy.fft import fft, fftshift
 
-    .container {
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-      background: rgba(0, 0, 0, 0.5); /* transparent box for text */
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    }
+S1 = fftshift(fft(s1_t))
+freq = np.linspace(-500e3, 500e3, len(S1))
 
-    h1 {
-      font-size: 3em;
-      margin-bottom: 40px;
-    }
-
-    .click-btn {
-      background-color: #00c3ff;
-      border: none;
-      padding: 16px 40px;
-      font-size: 1.5em;
-      color: white;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-
-    .click-btn:hover {
-      background-color: #00aaff;
-      transform: scale(1.1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Welcome to Igumori School Portal</h1>
-    <button class="click-btn" onclick="redirect()">Click Here</button>
-  </div>
-
-  <script>
-    function redirect() {
-      window.location.href = "http://fi5.bot-hosting.net:20662/student";
-    }
-  </script>
-</body>
-</html>
+plt.figure(figsize=(8,5))
+plt.plot(freq/1e3, abs(S1))
+plt.title('Frequency Spectrum of AM Signal (Proper Modulation)')
+plt.xlabel('Frequency (kHz)')
+plt.ylabel('Magnitude')
+plt.show()
